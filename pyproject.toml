@@ -1,0 +1,18 @@
+[tool.poetry]
+authors = ["Drew Silcock <drew.silcock@stfc.ac.uk>"]
+description = "Text generation with DistilGPT2 as a REST API."
+license = "MIT"
+name = "distilgpt2-api"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+fastapi = "^0.85.1"
+python = "~3.10"
+transformers = "^4.23.1"
+uvicorn = {extras = ["standard"], version = "^0.19.0"}
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+build-backend = "poetry.core.masonry.api"
+requires = ["poetry-core>=1.0.0"]
