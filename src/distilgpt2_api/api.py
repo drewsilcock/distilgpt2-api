@@ -1,8 +1,8 @@
+import logging
 from functools import cache
 from importlib.metadata import version
-import logging
 
-from fastapi import FastAPI, Request
+from fastapi import FastAPI
 
 from .text_generation import TextGenerator
 
@@ -10,7 +10,7 @@ app = FastAPI()
 
 
 def package() -> str:
-    return __name__.split(".")[0]
+    return __name__.split(".", maxsplit=1)[0]
 
 
 @cache
@@ -25,7 +25,7 @@ async def on_startup():
 
 
 @app.get("/")
-async def health(request: Request):
+async def health():
     model = get_model()
     return {
         "health": "ok",

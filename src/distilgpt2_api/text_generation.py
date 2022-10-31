@@ -5,9 +5,9 @@ from typing import TypedDict, cast
 from transformers import (
     GPT2LMHeadModel,
     GPT2Tokenizer,
+    TextGenerationPipeline,
     pipeline,
     set_seed,
-    TextGenerationPipeline,
 )
 
 
