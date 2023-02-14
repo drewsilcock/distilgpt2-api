@@ -19,10 +19,14 @@ class TextGenerator:
     generator: TextGenerationPipeline
 
     def __init__(
-        self, seed: int = 42, model_path: str | PathLike = Path("model")
+        self, seed: int = 42, model_path: str | PathLike | None = None
     ) -> None:
-        model = GPT2LMHeadModel.from_pretrained(model_path)
-        tokeniser = GPT2Tokenizer.from_pretrained(model_path)
+        model = GPT2LMHeadModel.from_pretrained(
+            model_path if model_path is not None else "distilgpt2"
+        )
+        tokeniser = GPT2Tokenizer.from_pretrained(
+            model_path if model_path is not None else "distilgpt2"
+        )
         self.generator = cast(
             TextGenerationPipeline,
             pipeline("text-generation", model=model, tokenizer=tokeniser),
